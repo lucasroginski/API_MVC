@@ -14,6 +14,9 @@ const User = sequelize.define('User', { // criando o modelo
         type: DataTypes.STRING, // tipo da coluna
         allowNull: false // não pode ser nulo
     }
+}, {
+    tableName: 'usuarios', // nome da tabela existente no banco
+    timestamps: false // desativa createdAt e updatedAt (a tabela usa criado_em)
 });
 
 module.exports = User; // exportando o modelo
