@@ -50,18 +50,3 @@ exports.update = async (req, res) => {
         res.status(500).json({ message: 'Erro ao atualizar cliente', error: error.message });
     }
 }
-
-//delete cliente by id
-exports.delete = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const cliente = await Cliente.findByPk(id);
-        if (!cliente) {
-            return res.status(404).json({ message: 'Cliente não encontrado' });
-        }
-        await cliente.destroy();
-        res.json({ message: 'Cliente deletado com sucesso' });
-    } catch (error) {
-        res.status(500).json({ message: 'Erro ao deletar cliente', error: error.message });
-    }
-}
